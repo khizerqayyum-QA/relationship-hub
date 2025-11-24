@@ -1,0 +1,127 @@
+{
+  "entities": [
+    {
+      "name": "Contact",
+      "created_at": false,
+      "updated_at": false,
+      "fields": [
+        {
+          "name": "first_name",
+          "type": "varchar",
+          "nullable": false
+        },
+        {
+          "name": "last_name",
+          "type": "varchar",
+          "nullable": false
+        },
+        {
+          "name": "email",
+          "type": "varchar",
+          "nullable": true,
+          "isUnique": true
+        },
+        {
+          "name": "phone",
+          "type": "varchar",
+          "nullable": true
+        }
+      ],
+      "indexes": [],
+      "uniques": [
+        {
+          "fields": [
+            "email"
+          ],
+          "name": "unique_email"
+        }
+      ]
+    },
+    {
+      "name": "Deal",
+      "created_at": false,
+      "updated_at": false,
+      "fields": [
+        {
+          "name": "title",
+          "type": "varchar",
+          "nullable": false
+        },
+        {
+          "name": "amount",
+          "type": "numeric",
+          "nullable": false
+        },
+        {
+          "name": "status",
+          "type": "varchar",
+          "nullable": false,
+          "default": "pending"
+        }
+      ],
+      "indexes": [],
+      "uniques": []
+    },
+    {
+      "name": "Note",
+      "created_at": false,
+      "updated_at": false,
+      "fields": [
+        {
+          "name": "content",
+          "type": "text",
+          "nullable": false
+        }
+      ],
+      "indexes": [],
+      "uniques": []
+    },
+    {
+      "name": "Activity",
+      "created_at": false,
+      "updated_at": false,
+      "fields": [
+        {
+          "name": "description",
+          "type": "text",
+          "nullable": false
+        },
+        {
+          "name": "date",
+          "type": "date",
+          "nullable": false
+        }
+      ],
+      "indexes": [],
+      "uniques": []
+    }
+  ],
+  "relationships": [
+    {
+      "from": "Contact",
+      "to": "Deal",
+      "type": "OneToMany"
+    },
+    {
+      "from": "Contact",
+      "to": "Note",
+      "type": "OneToMany"
+    },
+    {
+      "from": "Contact",
+      "to": "Activity",
+      "type": "OneToMany"
+    },
+    {
+      "from": "Deal",
+      "to": "Note",
+      "type": "OneToMany"
+    },
+    {
+      "from": "Deal",
+      "to": "Activity",
+      "type": "OneToMany"
+    }
+  ],
+  "_removedEntities": []
+}
